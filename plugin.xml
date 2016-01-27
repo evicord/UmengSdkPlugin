@@ -46,15 +46,14 @@
         
         <!--config-file-->
         <resource-file src="src/ios/UmengConfig.plist"/>
-        
-        <config-file target="*UmengConfig.plist" parent="/appKey">
-            <string>$APP_KEY</string>
-        </config-file>
-        
-        <config-file target="*UmengConfig.plist" parent="/channelId">
-            <string>$CHANNEL_ID</string>
+        <config-file target="*UmengConfig.plist" parent="params">
+            <dict>
+                <key>APP_KEY</key>
+                <string>$APP_KEY</string>
+                <key>CHANNEL_ID</key>
+                <string>$CHANNEL_ID</string>
+            </dict>
         </config-file>
 
-        
 	</platform>
 </plugin>

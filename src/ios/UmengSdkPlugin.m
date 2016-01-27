@@ -13,6 +13,7 @@
 {
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"UmengConfig" ofType:@"plist"];
     NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    data=[data objectForKey:@"params"];
     NSString* appKey=[data objectForKey:@"appKey"];
     //NSString* channelId=[data objectForKey:@"channelId"];
     
