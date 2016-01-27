@@ -18,8 +18,10 @@
 			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 			<uses-permission android:name="android.permission.INTERNET"></uses-permission>
 			<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+        </config-file>
 
-			<meta-data android:value="$APP_KEY" android:name="UMENG_APPKEY"></meta-data>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data android:value="$APP_KEY" android:name="UMENG_APPKEY"></meta-data>
 			<meta-data android:value="$CHANNEL_ID" android:name="UMENG_CHANNEL"/>
         </config-file>
 
