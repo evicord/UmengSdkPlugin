@@ -1,28 +1,29 @@
-/********* UmengSdkPlugin.m Cordova Plugin Implementation *******/
+//
+//  UmengSdkPlugin.m
+//  panart
+//
+//  Created by zsly on 16/1/27.
+//
+//
 
-#import <Cordova/CDV.h>
-
-@interface UmengSdkPlugin : CDVPlugin {
-  // Member variables go here.
-}
-
-- (void)coolMethod:(CDVInvokedUrlCommand*)command;
-@end
-
+#import "UmengSdkPlugin.h"
+#import "MobClick.h"
 @implementation UmengSdkPlugin
-
-- (void)coolMethod:(CDVInvokedUrlCommand*)command
+- (void)init:(CDVInvokedUrlCommand*)command
 {
-    CDVPluginResult* pluginResult = nil;
-    NSString* echo = [command.arguments objectAtIndex:0];
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"UmengConfig" ofType:@"plist"];
+    NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    NSString* appKey=[data objectForKey:@"appKey"];
+    //NSString* channelId=[data objectForKey:@"channelId"];
+    
+    //友盟统计服务
+    [MobClick startWithAppkey:appKey reportPolicy:BATCH channelId:nil];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
+    //开启测试模式
+#ifdef DEBUG
+    [MobClick setLogEnabled:YES];
+#endif
 
-    if (echo != nil && [echo length] > 0) {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:echo];
-    } else {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
-    }
-
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
-
 @end
