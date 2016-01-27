@@ -12,8 +12,19 @@
 				<param name="android-package" value="com.tyrion.plugin.umeng.UmengSdkPlugin" />
 			</feature>
 		</config-file>
-		<config-file parent="/*" target="AndroidManifest.xml" />
+
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+			<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+			<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+
+			<meta-data android:value="$APP_KEY" android:name="UMENG_APPKEY"></meta-data>
+			<meta-data android:value="$CHANNEL_ID" android:name="UMENG_CHANNEL"/>
+        </config-file>
+
 		<source-file src="src/android/UmengSdkPlugin.java" target-dir="src/com/tyrion/plugin/umeng" />
+		<source-file src="src/android/umeng-analytics-v5.6.4.jar" target-dir="libs" />
 	</platform>
 	<platform name="ios">
 		<config-file parent="/*" target="config.xml">
