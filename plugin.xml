@@ -34,6 +34,27 @@
 				<param name="ios-package" value="UmengSdkPlugin" />
 			</feature>
 		</config-file>
-		<source-file src="src/ios/UmengSdkPlugin.m" />
+		
+        <!--Operation-->
+        <header-file src="src/ios/UmengSdkPlugin.h"/>
+        <source-file src="src/ios/UmengSdkPlugin.m"/>
+        
+        <!--UmengSDK-->
+        <header-file src="src/ios/UMAnalytics_Sdk_3.6.6/MobClick.h"/>
+        <header-file src="src/ios/UMAnalytics_Sdk_3.6.6/MobClickSocialAnalytics.h"/>
+        <source-file src="src/ios/UMAnalytics_Sdk_3.6.6/libMobClickLibrary.a" framework="true" />
+        
+        <!--config-file-->
+        <resource-file src="src/ios/UmengConfig.plist"/>
+        
+        <config-file target="*UmengConfig.plist" parent="appKey">
+            <string>$APP_KEY</string>
+        </config-file>
+        
+        <config-file target="*UmengConfig.plist" parent="channelId">
+            <string>$CHANNEL_ID</string>
+        </config-file>
+
+        
 	</platform>
 </plugin>
