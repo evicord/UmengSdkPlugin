@@ -14,8 +14,8 @@
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"UmengConfig" ofType:@"plist"];
     NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     data=[data objectForKey:@"params"];
-    NSString* appKey=[data objectForKey:@"appKey"];
-    //NSString* channelId=[data objectForKey:@"channelId"];
+    NSString* appKey=[data objectForKey:@"APP_KEY"];
+    //NSString* channelId=[data objectForKey:@"CHANNEL_ID"];
     
     //友盟统计服务
     [MobClick startWithAppkey:appKey reportPolicy:BATCH channelId:nil];
